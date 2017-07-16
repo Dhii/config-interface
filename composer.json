@@ -12,13 +12,19 @@
     "minimum-stability": "dev",
     "prefer-stable": true,
     "require": {
-        "php": "^5.3 | ^7.0"
+        "php": "^5.3 | ^7.0",
+        "dhii/data-tree-interface": "dev-task/initial-interfaces",
+        "dhii/data-container-interface": "dev-task/initial-interfaces",
+        "dhii/stringable-interface": "^0.1"
     },
     "require-dev": {
         "phpunit/phpunit": "^4.8",
         "ptrofimov/xpmock": "^1.1",
         "dhii/php-cs-fixer-config": "dev-php-5.3",
         "codeclimate/php-test-reporter": "<=0.3.2"
+    },
+    "suggest": {
+        "dhii/stringable-interface": "To use Stringables as config keys"
     },
     "autoload": {
         "psr-4": {
