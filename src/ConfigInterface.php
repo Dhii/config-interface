@@ -7,6 +7,8 @@ use Dhii\Data\Tree\KeyAwareNodeInterface;
 use RecursiveIterator as RecursiveIteratorInterface;
 use Dhii\Data\Container\ContainerInterface;
 use Dhii\Util\String\StringableInterface as Stringable;
+use Dhii\Config\Exception\NotFoundExceptionInterface;
+use Dhii\Config\Exception\ConfigExceptionInterface;
 
 /**
  * Something that can represent a configuration tree.
@@ -21,7 +23,14 @@ interface ConfigInterface extends
         Stringable
 {
     /**
+     * Retrieves configuration for the specified key.
+     *
+     * @since [*next-version*]
+     *
      * @param string|Stringable $key The config key.
+     *
+     * @throws NotFoundExceptionInterface If no config is found for the specified key.
+     * @throws ConfigExceptionInterface   If a problem is encountered while retrieving configuration.
      *
      * @return ConfigInterface The configuration which corresponds to the key.
      */
