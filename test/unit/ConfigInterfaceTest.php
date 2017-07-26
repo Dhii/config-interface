@@ -32,8 +32,7 @@ class ConfigInterfaceTest extends TestCase
                 ->get()
                 ->getValue()
                 ->getKey()
-                ->hasChildren()
-                ->getChildren()
+                ->getIteration()
                 ->__toString();
         $mock->current();
         $mock->next();

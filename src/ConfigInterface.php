@@ -4,11 +4,11 @@ namespace Dhii\Config;
 
 use Dhii\Data\Tree\ChildrenAwareNodeInterface;
 use Dhii\Data\Tree\KeyAwareNodeInterface;
-use RecursiveIterator as RecursiveIteratorInterface;
 use Dhii\Data\Container\ContainerInterface;
 use Dhii\Util\String\StringableInterface as Stringable;
 use Dhii\Config\Exception\NotFoundExceptionInterface;
 use Dhii\Config\Exception\ConfigExceptionInterface;
+use Dhii\Iterator\RecursiveIteratorInterface;
 
 /**
  * Something that can represent a configuration tree.
