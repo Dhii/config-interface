@@ -1,36 +1,37 @@
 <?php
 
-namespace Dhii\Config\FuncTest;
+namespace Dhii\Config\UnitTest\Exception;
 
 use Xpmock\TestCase;
 
 /**
- * Tests {@see Dhii\Config\MyClass}.
- *
- * @TODO Search and replace tokens that begin with underscore.
+ * Tests {@see \Dhii\Config\Exception\NotFoundExceptionInterface}.
  *
  * @since [*next-version*]
  */
-class MyClassTest extends TestCase
+class NotFoundExceptionInterfaceTest extends TestCase
 {
     /**
      * The name of the test subject.
      *
      * @since [*next-version*]
      */
-    const TEST_SUBJECT_CLASSNAME = 'Dhii\\Config\\MyClass';
+    const TEST_SUBJECT_CLASSNAME = 'Dhii\\Config\\Exception\\NotFoundExceptionInterface';
 
     /**
      * Creates a new instance of the test subject.
      *
      * @since [*next-version*]
      *
-     * @return Dhii\Config\MyClass
+     * @return \Dhii\Config\Exception\NotFoundExceptionInterface
      */
     public function createInstance()
     {
         $mock = $this->mock(static::TEST_SUBJECT_CLASSNAME)
-            ->new();
+                ->getConfig()
+                ->getContainer()
+                ->getDataKey()
+                ->new();
 
         return $mock;
     }
@@ -45,7 +46,7 @@ class MyClassTest extends TestCase
         $subject = $this->createInstance();
 
         $this->assertInstanceOf(
-            static::TEST_SUBJECT_CLASSNAME, $subject, 'Subject is not a valid instance.'
+            static::TEST_SUBJECT_CLASSNAME, $subject, 'A valid instance of the test subject could not be created'
         );
     }
 }
