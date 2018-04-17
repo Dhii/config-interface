@@ -14,6 +14,13 @@ use Psr\Container\NotFoundExceptionInterface;
 interface ConfigInterface extends ContainerInterface
 {
     /**
+     * The separator that delimits keys in config path.
+     *
+     * @since [*next-version*]
+     */
+    const KEY_SEPARATOR = '/';
+
+    /**
      * Retrieves a configuration entry for the specified path.
      *
      * @since [*next-version*]
