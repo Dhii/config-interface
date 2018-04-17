@@ -3,9 +3,11 @@
 namespace Dhii\Config\UnitTest;
 
 use Xpmock\TestCase;
+use Dhii\Config\ConfigAwareInterface as TestSubject;
+use PHPUnit_Framework_MockObject_MockObject as MockObject;
 
 /**
- * Tests {@see \Dhii\Config\ConfigAwareInterface}.
+ * Tests {@see TestSubject}.
  *
  * @since [*next-version*]
  */
@@ -16,20 +18,20 @@ class ConfigAwareInterfaceTest extends TestCase
      *
      * @since [*next-version*]
      */
-    const TEST_SUBJECT_CLASSNAME = 'Dhii\\Config\\ConfigAwareInterface';
+    const TEST_SUBJECT_CLASSNAME = 'Dhii\Config\ConfigAwareInterface';
 
     /**
      * Creates a new instance of the test subject.
      *
      * @since [*next-version*]
      *
-     * @return \Dhii\Config\ConfigAwareInterface
+     * @return TestSubject|MockObject The new instance.
      */
     public function createInstance()
     {
-        $mock = $this->mock(static::TEST_SUBJECT_CLASSNAME)
-                ->getConfig()
-                ->new();
+        $mock = $this->getMockBuilder(static::TEST_SUBJECT_CLASSNAME)
+            ->setMethods(array('getConfig'))
+            ->getMock();
 
         return $mock;
     }
@@ -43,8 +45,6 @@ class ConfigAwareInterfaceTest extends TestCase
     {
         $subject = $this->createInstance();
 
-        $this->assertInstanceOf(
-            static::TEST_SUBJECT_CLASSNAME, $subject, 'A valid instance of the test subject could not be created'
-        );
+        $this->assertInstanceOf(static::TEST_SUBJECT_CLASSNAME, $subject, 'A valid instance of the test subject could not be created');
     }
 }
