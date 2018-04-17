@@ -13,6 +13,7 @@ and this project adheres to [Semantic Versioning](http://semver.org/).
 
 ### Added
 - `ConfigInterface::KEY_SEPARATOR` now exposes the key separator.
+- `ConfigFactoryInterface`.
 
 ## [0.1-alpha1] - 2018-04-17
 Initial version.
