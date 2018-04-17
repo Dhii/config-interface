@@ -2,37 +2,29 @@
 
 namespace Dhii\Config;
 
-use Dhii\Data\Tree\ChildrenAwareNodeInterface;
-use Dhii\Data\Tree\KeyAwareNodeInterface;
-use Dhii\Data\Container\ContainerInterface;
-use Dhii\Util\String\StringableInterface as Stringable;
-use Dhii\Config\Exception\NotFoundExceptionInterface;
-use Dhii\Config\Exception\ConfigExceptionInterface;
-use Dhii\Iterator\RecursiveIteratorInterface;
+use Psr\Container\ContainerExceptionInterface;
+use Psr\Container\ContainerInterface;
+use Psr\Container\NotFoundExceptionInterface;
 
 /**
  * Something that can represent a configuration tree.
  *
  * @since [*next-version*]
  */
-interface ConfigInterface extends
-        ChildrenAwareNodeInterface,
-        KeyAwareNodeInterface,
-        RecursiveIteratorInterface,
-        ContainerInterface,
-        Stringable
+interface ConfigInterface extends ContainerInterface
 {
     /**
-     * Retrieves configuration for the specified key.
+     * Retrieves a configuration entry for the specified path.
      *
      * @since [*next-version*]
      *
-     * @param string|Stringable $key The config key.
+     * @param string $id The config path.
      *
-     * @throws NotFoundExceptionInterface If no config is found for the specified key.
-     * @throws ConfigExceptionInterface   If a problem is encountered while retrieving configuration.
+     * @throws NotFoundExceptionInterface  No entry was found for the specified path.
+     * @throws ContainerExceptionInterface Error while retrieving the entry.
      *
-     * @return ConfigInterface The configuration which corresponds to the key.
+     * @return mixed The value for the specified path.
+     * A {@see ConfigInterface} instance MAY be returned for nested configuration.
      */
-    public function get($key);
+    public function get($id);
 }
