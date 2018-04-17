@@ -31,7 +31,7 @@ interface ConfigInterface extends ContainerInterface
      * @throws ContainerExceptionInterface Error while retrieving the entry.
      *
      * @return mixed The value for the specified path.
-     * A {@see ConfigInterface} instance MAY be returned for nested configuration.
+     *               A {@see ConfigInterface} instance MAY be returned for nested configuration.
      */
     public function get($id);
 }

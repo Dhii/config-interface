@@ -30,7 +30,7 @@ class ConfigInterfaceTest extends TestCase
     public function createInstance()
     {
         $mock = $this->getMockBuilder(static::TEST_SUBJECT_CLASSNAME)
-            ->setMethods(array('get','has'))
+            ->setMethods(array('get', 'has'))
             ->getMock();
 
         return $mock;
@@ -58,6 +58,6 @@ class ConfigInterfaceTest extends TestCase
     {
         $subject = $this->createInstance();
 
-        $this->assertEquals('/', constant(sprintf('%1$s::%2$s', get_class($subject),'KEY_SEPARATOR')), 'Wrong key separator retrieved');
+        $this->assertEquals('/', constant(sprintf('%1$s::%2$s', get_class($subject), 'KEY_SEPARATOR')), 'Wrong key separator retrieved');
     }
 }
