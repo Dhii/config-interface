@@ -30,7 +30,7 @@ class ConfigInterfaceTest extends TestCase
     public function createInstance()
     {
         $mock = $this->getMockBuilder(static::TEST_SUBJECT_CLASSNAME)
-            ->setMethods(array('get','has', 'getValue', 'getKey', 'getIteration', '__toString'))
+            ->setMethods(array('get','has'))
             ->getMock();
 
         return $mock;
@@ -46,5 +46,6 @@ class ConfigInterfaceTest extends TestCase
         $subject = $this->createInstance();
 
         $this->assertInstanceOf(static::TEST_SUBJECT_CLASSNAME, $subject, 'A valid instance of the test subject could not be created');
+        $this->assertInstanceOf('Psr\Container\ContainerInterface', $subject, 'A valid instance of the test subject could not be created');
     }
 }
