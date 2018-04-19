@@ -3,9 +3,11 @@
 namespace Dhii\Config\UnitTest;
 
 use Xpmock\TestCase;
+use Dhii\Config\ConfigInterface as TestSubject;
+use PHPUnit_Framework_MockObject_MockObject as MockObject;
 
 /**
- * Tests {@see \Dhii\Config\ConfigInterface}.
+ * Tests {@see TestSubject}.
  *
  * @since [*next-version*]
  */
@@ -16,31 +18,20 @@ class ConfigInterfaceTest extends TestCase
      *
      * @since [*next-version*]
      */
-    const TEST_SUBJECT_CLASSNAME = 'Dhii\\Config\\ConfigInterface';
+    const TEST_SUBJECT_CLASSNAME = 'Dhii\Config\ConfigInterface';
 
     /**
      * Creates a new instance of the test subject.
      *
      * @since [*next-version*]
      *
-     * @return \Dhii\Config\ConfigInterface
+     * @return TestSubject|MockObject The new
      */
     public function createInstance()
     {
-        $mock = $this->mock(static::TEST_SUBJECT_CLASSNAME)
-                ->has()
-                ->get()
-                ->getValue()
-                ->getKey()
-                ->getIteration()
-                ->__toString();
-        $mock->current();
-        $mock->next();
-        $mock->key();
-        $mock->valid();
-        $mock->rewind();
-
-        $mock = $mock->new();
+        $mock = $this->getMockBuilder(static::TEST_SUBJECT_CLASSNAME)
+            ->setMethods(array('get', 'has'))
+            ->getMock();
 
         return $mock;
     }
@@ -54,8 +45,19 @@ class ConfigInterfaceTest extends TestCase
     {
         $subject = $this->createInstance();
 
-        $this->assertInstanceOf(
-            static::TEST_SUBJECT_CLASSNAME, $subject, 'A valid instance of the test subject could not be created'
-        );
+        $this->assertInstanceOf(static::TEST_SUBJECT_CLASSNAME, $subject, 'A valid instance of the test subject could not be created');
+        $this->assertInstanceOf('Psr\Container\ContainerInterface', $subject, 'Subject does not implement required interface');
+    }
+
+    /**
+     * Tests that the config key separator is correct.
+     *
+     * @since [*next-version*]
+     */
+    public function testKeySeparator()
+    {
+        $subject = $this->createInstance();
+
+        $this->assertEquals('/', constant(sprintf('%1$s::%2$s', get_class($subject), 'KEY_SEPARATOR')), 'Wrong key separator retrieved');
     }
 }

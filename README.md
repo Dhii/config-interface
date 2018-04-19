@@ -7,6 +7,20 @@
 [![This package complies with Dhii standards](https://img.shields.io/badge/Dhii-Compliant-green.svg?style=flat-square)][Dhii]
 
 ## Details
-Interfaces for working with structured configuration.
+[PSR-11][]-compatible interfaces for working with structured configuration.
 
-[Dhii]: https://github.com/Dhii/dhii
+### Interfaces
+- [`ConfigInterface`][ConfigInterface] - The main interface. On top of [`ContainerInterface`][ContainerInterface],
+it adds the concept of "path", allowing access to nested data.
+- [`ConfigAwareInterface`][ConfigAwareInterface] - Awareness of a config.
+- [`ConfigFactoryInterface`][ConfigFactoryInterface] - Creates config instances.
+
+
+[Dhii]:                                     https://github.com/Dhii/dhii
+[PSR-11]:                                   https://github.com/php-fig/fig-standards/blob/master/accepted/PSR-11-container.md
+
+[ConfigInterface]:                          src/ConfigInterface.php
+[ConfigFactoryInterface]:                   src/ConfigFactoryInterface.php
+[ConfigAwareInterface]:                     src/ConfigAwareInterface.php
+
+[ContainerInterface]:                       https://github.com/php-fig/container/blob/master/src/ContainerInterface.php
