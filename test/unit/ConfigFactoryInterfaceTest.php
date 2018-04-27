@@ -46,6 +46,6 @@ class ConfigFactoryInterfaceTest extends TestCase
         $subject = $this->createInstance();
 
         $this->assertInstanceOf(static::TEST_SUBJECT_CLASSNAME, $subject, 'A valid instance of the test subject could not be created');
-        $this->assertInstanceOf('Dhii\Factory\FactoryInterface', $subject, 'Subject does not implement required interface');
+        $this->assertInstanceOf('Dhii\Data\Container\ContainerFactoryInterface', $subject, 'Subject does not implement required interface');
     }
 }
